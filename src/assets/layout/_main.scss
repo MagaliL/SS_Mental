@@ -5,9 +5,14 @@
     justify-content: space-between;
     padding: 6rem 2rem 0 2rem;
     transition: margin-left var(--layout-section-transition-duration);
+    margin-left: 0 !important; /* Elimina el espacio del sidebar */
+    align-items: flex-start; /* Alinea todo a la izquierda */
+    width: 100%; /* Asegura ancho completo */
 }
 
 .layout-main {
     flex: 1 1 auto;
     padding-bottom: 2rem;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-width: 100%; /* Evita restricciones de ancho */
 }
