@@ -1,8 +1,39 @@
-.layout-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 0 1rem 0;
-    gap: 0.5rem;
-    border-top: 1px solid var(--surface-border);
+//Se modifica este código para modificar los estilos de los logos del footer (Magali)
+
+.container{
+    width: 100%;
+    background-color: #d8d8d8;
 }
+
+.layout-footer {
+    background-color: #d8d8d8;
+    border-top: 1px solid var(--surface-border);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.footerlogos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    background-color: #d8d8d8;
+    position: relative; /* Necesario para posicionamiento absoluto */
+       
+      }
+
+.logo_izquierda{
+    text-align: left;
+  line-height: 1.3;
+}
+
+.logo_derecho{
+    text-align: right;
+    line-height: 1.3;
+}
+
+
