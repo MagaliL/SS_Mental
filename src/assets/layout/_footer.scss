@@ -1,12 +1,17 @@
 //Se modifica este código para modificar los estilos de los logos del footer (Magali)
 
+
+
 .container{
+    
     width: 100%;
-    background-color: #d8d8d8;
+    padding-left: 0%;
+    padding-right: 0%;
+    
 }
 
 .layout-footer {
-    background-color: #d8d8d8;
+    // background-color: #ffffff;
     border-top: 1px solid var(--surface-border);
     width: 100%;
     margin: 0;
@@ -21,7 +26,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem 2rem;
-    background-color: #d8d8d8;
+    // background-color: #ffffff;
     position: relative; 
        
       }
