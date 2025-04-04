@@ -21,9 +21,9 @@ import 'vue-flux/style.css';
    });
 
    const vfRscs = shallowReactive([
-      new Img('URL1', 'img 1'),
-      new Img('URL2', 'img 2'),
-      new Img('URL3', 'img 3'),
+      new Img('/demo/images/slide/AyS.png', 'Programa de Salud Mental'),
+      new Img('/demo/images/slide/Pautas_para_la-atencion.png', 'Pautas para la atención'),
+      new Img('/demo/images/slide/Proceso.png', 'Ruta de atención'),
    ]);
 
    const vfTransitions = shallowReactive([Book, Zip]);
