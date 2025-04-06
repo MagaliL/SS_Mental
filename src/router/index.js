@@ -23,6 +23,41 @@ const router = createRouter({
                     component: () => import('@/views/agendar.vue')
                 },
 
+                {
+                    path: '/login',
+                    name: 'login',
+                    component: () => import('@/views/login.vue')
+                },
+
+                {
+                    path: '/acompañamientoval',
+                    name: 'acompañamientoval',
+                    component: () => import('@/views/acompañamientoval.vue')
+                },
+                
+                {
+                    path: '/actividades',
+                    name: 'actividades',
+                    component:() => import('@/views/actividades.vue')
+                },
+
+                {
+                    path: '/actividadesPreFor',
+                    name: 'actividadesPreFor',
+                    component:() => import('@/views/actividadesPreFor.vue')
+                },
+
+                {
+                    path: '/areasprogra',
+                    name: 'areasprogra',
+                    component:() => import('@/views/areasprogra.vue')
+                },
+
+                {
+                    path: '/basesprograma',
+                    name: 'basesprograma',
+                    component:() => import('@/views/basesprograma.vue')
+                },
 
 // Hasta aquí se agregaron los links de páginas secundarias
                 {
