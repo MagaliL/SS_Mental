@@ -1,3 +1,5 @@
+// Acá vamos a agregar las rutas de las páginas secundarias
+
 import AppLayout from '@/layout/AppLayout.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -13,6 +15,16 @@ const router = createRouter({
                     name: 'dashboard',
                     component: () => import('@/views/Dashboard.vue')
                 },
+
+// Desde aquí se agregan las páginas secundarias
+                {
+                    path: '/agendar',
+                    name: 'agendar',
+                    component: () => import('@/views/agendar.vue')
+                },
+
+
+// Hasta aquí se agregaron los links de páginas secundarias
                 {
                     path: '/uikit/formlayout',
                     name: 'formlayout',
