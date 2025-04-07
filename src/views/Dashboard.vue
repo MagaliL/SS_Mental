@@ -57,9 +57,17 @@ const welcomeMessage = "Bienvenido";
     <!-- Botones -->
 
     <div class="Botones_home">
-      <button class="primary-button1"><a href="" target="_blank">AGENDAR PRIMERA CITA</a></button> <br>
-      <button class="primary-button2"><a href="/views/emergencia.vue" target="_blank">EMERGENCIA</a></button> <br>
-      <button class="primary-button3"><a href="" target="_blank">ACTIVIDADES</a></button>  <br>
+      <router-link to="/agendar" custom v-slot="{ navigate }">
+      <button class="primary-button1" @click="navigate">AGENDAR PRIMERA CITA</button>
+      </router-link><br>
+
+      <router-link to="/emergencia" custom v-slot="{ navigate }">
+      <button class="primary-button2" @click="navigate">EMERGENCIA</button>
+      </router-link> <br>
+      
+      <router-link to="/actividades" custom v-slot="{ navigate }">
+      <button class="primary-button3" @click="navigate">ACTIVIDADES</button>  
+      </router-link><br>
     </div>
 
     </div>
