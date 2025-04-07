@@ -24,15 +24,9 @@ const router = createRouter({
                 },
 
                 {
-                    path: '/login',
-                    name: 'login',
-                    component: () => import('@/views/login.vue')
-                },
-
-                {
-                    path: '/acompañamiento',
-                    name: 'acompañamiento',
-                    component: () => import('@/views/acompañamiento.vue')
+                    path: '/acompanamiento',
+                    name: 'acompanamiento',
+                    component: () => import('@/views/acompanamiento.vue')
                 },
                 
                 {
@@ -42,16 +36,16 @@ const router = createRouter({
                 },
 
                 {
-                    path: '/actividadesPreFor',
-                    name: 'actividadesPreFor',
-                    component:() => import('@/views/actividadesPreFor.vue')
+                    path: '/preventivas',
+                    name: 'preventivas',
+                    component:() => import('@/views/preventivas.vue')
                 },
 
-                {
-                    path: '/areasprogra',
-                    name: 'areasprogra',
-                    component:() => import('@/views/areasprogra.vue')
-                },
+                 {
+                     path: '/areasprogra',
+                     name: 'areasprogra',
+                     component:() => import('@/views/areasprogra.vue')
+                 },
 
                 {
                     path: '/basesprograma',
@@ -90,7 +84,12 @@ const router = createRouter({
                     component:() => import('@/views/emergencia.vue')
                 },
 
-                
+                {
+                    path: '/acceso',
+                    name: 'acceso',
+                    component: () => import('@/views/acceso.vue')
+                },
+
                 {
                     path: '/recursoslinea',
                     name: 'recursoslinea',
