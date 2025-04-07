@@ -58,7 +58,7 @@ const welcomeMessage = "Bienvenido";
 
     <div class="Botones_home">
       <button class="primary-button1"><a href="" target="_blank">AGENDAR PRIMERA CITA</a></button> <br>
-      <button class="primary-button2"><a href="" target="_blank">EMERGENCIA</a></button> <br>
+      <button class="primary-button2"><a href="/views/emergencia.vue" target="_blank">EMERGENCIA</a></button> <br>
       <button class="primary-button3"><a href="" target="_blank">ACTIVIDADES</a></button>  <br>
     </div>
 

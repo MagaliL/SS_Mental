@@ -30,9 +30,9 @@ const router = createRouter({
                 },
 
                 {
-                    path: '/acompañamientoval',
-                    name: 'acompañamientoval',
-                    component: () => import('@/views/acompañamientoval.vue')
+                    path: '/acompañamiento',
+                    name: 'acompañamiento',
+                    component: () => import('@/views/acompañamiento.vue')
                 },
                 
                 {
@@ -58,6 +58,45 @@ const router = createRouter({
                     name: 'basesprograma',
                     component:() => import('@/views/basesprograma.vue')
                 },
+
+                {
+                    path: '/canalizacion',
+                    name: 'canalizacion',
+                    component:() => import('@/views/canalizacion.vue')
+                },
+
+                {
+                    path: '/conjuntonorte',
+                    name: 'conjuntonorte',
+                    component:() => import('@/views/conjuntonorte.vue')
+                },
+
+                {
+                    path: '/conjuntosurm',
+                    name: 'conjuntosurm',
+                    component:() => import('@/views/conjuntosurm.vue')
+
+                },
+
+                {
+                    path: '/conjuntosurs',
+                    name: 'conjuntosurs',
+                    component:() => import('@/views/conjuntosurs.vue')
+                },
+                
+                {
+                    path: '/emergencia',
+                    name: 'emergencia',
+                    component:() => import('@/views/emergencia.vue')
+                },
+
+                
+                {
+                    path: '/recursoslinea',
+                    name: 'recursoslinea',
+                    component:() => import('@/views/recursoslinea.vue')
+                },
+                
 
 // Hasta aquí se agregaron los links de páginas secundarias
                 {
