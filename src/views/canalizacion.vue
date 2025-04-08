@@ -19,10 +19,14 @@
      <img src="/public/demo/images/foto/alma_rosa.jpeg" style="width: 50%; height: 70%;" alt="Lic. Alma Rosa López Velarde">
       </div>
       
-      <div class="columna"><br><br><p style="text-align: justify;" class="text-columna">Trabajadora Social de formación con una Especialidad en Diseño de Modelos de Intervención en Trabajo Social con mujeres, con Perspectiva de Género, promoviendo la participación de individuos, grupos, comunidades y la sociedad en general, en acciones que prevengan, atiendan o den solución, a las necesidades y problemas que se presenten. </p></div>
+      
+      <div class="columna">
+        <h2>Lic. Alma Rosa López Velarde</h2>
+        <p style="text-align: justify;" class="text-columna">Trabajadora Social de formación con una Especialidad en Diseño de Modelos de Intervención en Trabajo Social con mujeres, con Perspectiva de Género, promoviendo la participación de individuos, grupos, comunidades y la sociedad en general, en acciones que prevengan, atiendan o den solución, a las necesidades y problemas que se presenten. </p></div>
       </div>  
 
 
+      
       <!-- Enlace de vuelta al home -->
       <router-link to="/" class="nav-link">Volver al inicio</router-link>
     
@@ -58,3 +62,4 @@ img{
   gap: 10%; /* Espacio entre columnas */
 }
 </style>
+
