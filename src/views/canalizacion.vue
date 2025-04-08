@@ -1,6 +1,5 @@
 <script setup>
 // Esta parte es para indexarlo con la página princial
-import AppLayout from '@/layout/AppLayout.vue';
 </script>
 
 
