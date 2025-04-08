@@ -1,6 +1,5 @@
 <script setup>
-
-import { ref, shallowReactive } from 'vue';
+import { ref, shallowReactive, onMounted } from 'vue';
 import {
    Book,
    FluxCaption,
@@ -12,12 +11,24 @@ import {
    VueFlux,
    Zip,
 } from 'vue-flux';
+
 import 'vue-flux/style.css';
 
    const $vueFlux = ref();
+   const isLoaded = ref(false);
 
    const vfOptions = shallowReactive({
-      autoplay: true,
+      autoplay: true, //Reproducción automática
+      height:'500px',
+      width: '100%',
+      autoplaydelay: 5000,  // 5 segundos entre tansiciones
+      allowFullscreen: true,
+      fill: true,
+      responsive: true,
+      controls: true,
+      pagination: true,
+      aspectRatio: '16:9',
+       
    });
 
    const vfRscs = shallowReactive([
@@ -26,12 +37,17 @@ import 'vue-flux/style.css';
       new Img('/demo/images/slide/Proceso.png', 'Ruta de atención'),
    ]);
 
-   const vfTransitions = shallowReactive([Book, Zip]);
+   const vfTransitions = shallowReactive(['fade', 'slide']);
+
+   onMounted(() => {
+      if ($vueflux.value){
+         isLoaded.value = true;
+         console.log('VueFlux cargando:', $vueFlux.value)
+      }
+   });
 
 
 
-// Contenido personalizado aquí:
-const welcomeMessage = "Bienvenido";
 </script>
 
 
@@ -89,11 +105,16 @@ const welcomeMessage = "Bienvenido";
     <br><br><br>
    
 </div>
+<br><br><br>
 
 <div class="slideshow">
- 
+   <div v-if="!isLoaded" class="loading-placeholder">
+      Cargando imágenes...
+    </div>
+    
  <!-- Componente slideshow -->
  <VueFlux
+ v-if="isLoaded"
  :options="vfOptions"
  :rscs="vfRscs"
  :transitions="vfTransitions"
@@ -120,7 +141,7 @@ const welcomeMessage = "Bienvenido";
  </template>
 </VueFlux>
 
-<button @click="$vueFlux.show('next')">NEXT</button>
+<button @click="$vueFlux.show('next')" class="nav-button">NEXT</button>
 </div> 
 
 </template>
