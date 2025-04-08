@@ -18,6 +18,12 @@ const router = createRouter({
 
 // Desde aquí se agregan las páginas secundarias
                 {
+                    path: '/sobreprograma',
+                    name: 'sobreprograma',
+                    component: () => import('@/views/sobreprograma.vue')
+                },
+
+                {
                     path: '/agendar',
                     name: 'agendar',
                     component: () => import('@/views/agendar.vue')
