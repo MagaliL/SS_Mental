@@ -1,3 +1,5 @@
+// Acá vamos a agregar las rutas de las páginas secundarias
+
 import AppLayout from '@/layout/AppLayout.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -13,6 +15,95 @@ const router = createRouter({
                     name: 'dashboard',
                     component: () => import('@/views/Dashboard.vue')
                 },
+
+// Desde aquí se agregan las páginas secundarias
+                {
+                    path: '/sobreprograma',
+                    name: 'sobreprograma',
+                    component: () => import('@/views/sobreprograma.vue')
+                },
+
+                {
+                    path: '/agendar',
+                    name: 'agendar',
+                    component: () => import('@/views/agendar.vue')
+                },
+
+                {
+                    path: '/acompanamiento',
+                    name: 'acompanamiento',
+                    component: () => import('@/views/acompanamiento.vue')
+                },
+                
+                {
+                    path: '/actividades',
+                    name: 'actividades',
+                    component:() => import('@/views/actividades.vue')
+                },
+
+                {
+                    path: '/preventivas',
+                    name: 'preventivas',
+                    component:() => import('@/views/preventivas.vue')
+                },
+
+                 {
+                     path: '/areasprogra',
+                     name: 'areasprogra',
+                     component:() => import('@/views/areasprogra.vue')
+                 },
+
+                {
+                    path: '/basesprograma',
+                    name: 'basesprograma',
+                    component:() => import('@/views/basesprograma.vue')
+                },
+
+                {
+                    path: '/canalizacion',
+                    name: 'canalizacion',
+                    component:() => import('@/views/canalizacion.vue')
+                },
+
+                {
+                    path: '/conjuntonorte',
+                    name: 'conjuntonorte',
+                    component:() => import('@/views/conjuntonorte.vue')
+                },
+
+                {
+                    path: '/conjuntosurm',
+                    name: 'conjuntosurm',
+                    component:() => import('@/views/conjuntosurm.vue')
+
+                },
+
+                {
+                    path: '/conjuntosurs',
+                    name: 'conjuntosurs',
+                    component:() => import('@/views/conjuntosurs.vue')
+                },
+                
+                {
+                    path: '/emergencia',
+                    name: 'emergencia',
+                    component:() => import('@/views/emergencia.vue')
+                },
+
+                {
+                    path: '/acceso',
+                    name: 'acceso',
+                    component: () => import('@/views/acceso.vue')
+                },
+
+                {
+                    path: '/recursoslinea',
+                    name: 'recursoslinea',
+                    component:() => import('@/views/recursoslinea.vue')
+                },
+                
+
+// Hasta aquí se agregaron los links de páginas secundarias
                 {
                     path: '/uikit/formlayout',
                     name: 'formlayout',
