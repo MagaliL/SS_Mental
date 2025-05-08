@@ -13,7 +13,7 @@ const welcomeMessage = 'Bienvenido';
 
 <template>
 
-    <vueper-slides :infinite="true" :bullets="true">
+    <vueper-slides :infinite="true" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
         <vueper-slide title="Prueba" content="Funciona?"></vueper-slide>
 
                         <template #arrow-left>
@@ -159,7 +159,7 @@ const welcomeMessage = 'Bienvenido';
   height: 16px;
 }
 
-.vueperslides__bullet--active .default {background-color: #42b983;}
+.vueperslides__bullet--active .default {background-color:#cd171e ;}
 
 .vueperslides__bullet span {
   display: block;
