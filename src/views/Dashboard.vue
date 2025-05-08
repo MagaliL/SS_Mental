@@ -1,5 +1,9 @@
 <script setup>
 import Galleria from 'primevue/galleria';
+import { VueperSlide, VueperSlides } from 'vueperslides';
+import 'vueperslides/dist/vueperslides.css';
+
+
 
 // Contenido personalizado aquí:
 const welcomeMessage = 'Bienvenido';
@@ -8,9 +12,26 @@ const welcomeMessage = 'Bienvenido';
 <!-- Html del homepage, sus estilos están en _main.scss -->
 
 <template>
+
+    <vueper-slides :infinite="true" :bullets="true">
+        <vueper-slide title="Prueba" content="Funciona?"></vueper-slide>
+
+                        <template #arrow-left>
+                            <i class="icon icon-arrow-left" />
+                        </template>
+
+                        <template #arrow-right>
+                            <i class="icon icon-arrow-right" />
+                        </template>
+                        <vueper-slide v-for="i in 5" :key="i" :title="i.toString()" />
+                </vueper-slides>
+
+
     <div class="Homepage_container">
+
         <div class="columna">
             <section class="hero-section">
+
                 <center><h1 class="titulo_home">Estamos para escucharte</h1></center>
                 <center><h2 class="subtitulo_home">Acompañamiento a tu salud mental</h2></center>
             </section>
@@ -125,3 +146,25 @@ const welcomeMessage = 'Bienvenido';
 
     <button @click="$vueFlux.show('next')">NEXT</button>
 </template>
+
+
+
+<style>
+.vueperslides__bullet .default {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  box-shadow: none;
+  transition: 0.3s;
+  width: 16px;
+  height: 16px;
+}
+
+.vueperslides__bullet--active .default {background-color: #42b983;}
+
+.vueperslides__bullet span {
+  display: block;
+  color: #fff;
+  font-size: 10px;
+  opacity: 0.8;
+}
+</style>
