@@ -19,8 +19,8 @@
             </div>
             <div class="texto">
                 <ul>
-                    <li><b>¡Juntxs somos Facultad de Ingeniería!</b></li><br>
-                    <li><b>FI comprometida con la salud mental</b></li><br>
+                    <!-- <li><b>¡Juntxs somos Facultad de Ingeniería!</b></li><br>
+                    <li><b>FI comprometida con la salud mental</b></li><br> -->
                     <li><a href="https://www.ingenieria.unam.mx/paginas/aviso_privacidad.php" target="_blank" rel="noopener noreferrer" class="hover-link">Aviso de privacidad</a></li>
                 </ul>
             </div>
