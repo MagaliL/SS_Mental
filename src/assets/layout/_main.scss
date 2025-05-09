@@ -111,20 +111,3 @@ button{
         background: rgba(0,0,0,0.8);
       }
 
-.vueperslides__bullet .default {
-  background-color: rgba(0, 0, 0, 0.3);
-  border: none;
-  box-shadow: none;
-  transition: 0.3s;
-  width: 16px;
-  height: 16px;
-}
-
-.vueperslides__bullet--active .default {background-color: #42b983;}
-
-.vueperslides__bullet span {
-  display: block;
-  color: #fff;
-  font-size: 10px;
-  opacity: 0.8;
-}

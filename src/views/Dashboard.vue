@@ -1,5 +1,5 @@
 <script setup>
-import Galleria from 'primevue/galleria';
+import '@fortawesome/fontawesome-free/css/all.css'; // Importa Font Awesome
 import { VueperSlide, VueperSlides } from 'vueperslides';
 import 'vueperslides/dist/vueperslides.css';
 
@@ -7,39 +7,28 @@ import 'vueperslides/dist/vueperslides.css';
 
 // Contenido personalizado aquí:
 const welcomeMessage = 'Bienvenido';
+components: { VueperSlides, VueperSlide }
 </script>
 
 <!-- Html del homepage, sus estilos están en _main.scss -->
 
 <template>
 
-    <vueper-slides :infinite="true" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
-        <vueper-slide title="Prueba" content="Funciona?">Aquí debería haber texto</vueper-slide>
-
-                        <template #arrow-left>
-                            <i class="icon icon-arrow-left" />
-                        </template>
-
-                        <template #arrow-right>
-                            <i class="icon icon-arrow-right" />
-                        </template>
-                        <vueper-slide v-for="i in 5" :key="i" :title="i.toString()" />
-                </vueper-slides>
-
-
     <div class="Homepage_container">
 
         <div class="columna">
             <section class="hero-section">
 
-                <center><h1 class="titulo_home">Estamos para escucharte</h1></center>
-                <center><h2 class="subtitulo_home">Acompañamiento a tu salud mental</h2></center>
+                <center><img src="/public/demo/images/home/facultad_ingenieria.jpg" style="border-radius: 2em;" ></center>
+
+                <!-- <center><h1 class="titulo_home">Estamos para escucharte</h1></center>
+                <center><h2 class="subtitulo_home">Acompañamiento a tu salud mental</h2></center> -->
             </section>
-            <div class="Info">
+            <!-- <div class="Info">
                 <center>
                     <b><p>Horario de atención del programa</p></b> <b><p>De lunes a viernes de 9:00 a 19:00</p></b>
                 </center>
-            </div>
+            </div> -->
             <br /><br />
 
             <!-- Botones -->
@@ -84,7 +73,13 @@ const welcomeMessage = 'Bienvenido';
             <!-- Redes sociales -->
 
             <div class="redes_sociales">
+                 <center><h1 class="titulo_home">Te acompañamos en el cuidado de tu salud mental</h1></center> <br>
+
+                 <p>Sabemos que los desafíos académicos pueden ser exigentes, pero también sabemos que cuidar de tu salud física y mental es clave para alcanzar tus metas. ​La Facultad de Ingeniería no es solo un lugar para desarrollar habilidades técnicas, sino también para crecer como personas integras y equilibradas.</p>
                 <center>
+                <br>
+                <br>
+                <br>
                     <b><h4 class="Info">Síguenos en Facebook</h4></b>
                 </center>
                 <center>
@@ -99,57 +94,64 @@ const welcomeMessage = 'Bienvenido';
         <br /><br /><br />
     </div>
 
-    <div class="slideshow">
-        <!-- Componente slideshow -->
+        <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
+        <vueper-slide
+      title="Emergencia"
+      
+      :style="{
+        backgroundColor: '#e42936',
+        color: 'white',
+        fontSize: '3rem'
+        
+      }"
+    />
+        <vueper-slide
+      title="Agenda tu Primera Cita"
+      :style="{
+        backgroundColor: '#24417c',
+        color: 'white',
+        fontSize: '3rem'
+        
+      }"
+    />
+   
+       <vueper-slide
+      title="Actividades"
+      :style="{
+        backgroundColor: '#e85d26',
+        color: 'white',
+        fontSize: '3rem'
+        
+      }"
+    />
 
-        <Galleria
-            ref="galleria"
-            v-model:activeIndex="activeIndex"
-            :value="images"
-            :numVisible="5"
-            containerStyle="max-width: 640px"
-            :showThumbnails="showThumbnails"
-            :showItemNavigators="true"
-            :showItemNavigatorsOnHover="true"
-            :circular="true"
-            :autoPlay="isAutoPlay"
-            :transitionInterval="3000"
-            :responsiveOptions="responsiveOptions"
-            :pt="{ root: { class: [{ 'flex flex-col': fullScreen }] }, content: { class: ['relative', { 'flex-1 justify-center': fullScreen }] }, thumbnails: 'absolute w-full left-0 bottom-0' }"
-        >
-            <template #item="slotProps">
-                <img :src="slotProps.item.itemImageSrc" :alt="slotProps.item.alt" :style="[{ width: !fullScreen ? '100%' : '', display: !fullScreen ? 'block' : '' }]" />
-            </template>
-            <template #thumbnail="slotProps">
-                <div class="grid gap-4 justify-center">
-                    <img :src="slotProps.item.thumbnailImageSrc" :alt="slotProps.item.alt" style="display: block" />
-                </div>
-            </template>
-            <template #footer>
-                <div class="flex items-stretch bg-surface-950 text-white h-10">
-                    <button type="button" @click="onThumbnailButtonClick" class="bg-transparent border-none rounded-none hover:bg-white/10 text-white inline-flex justify-center items-center cursor-pointer px-3">
-                        <i class="pi pi-th-large"></i>
-                    </button>
-                    <button type="button" @click="toggleAutoSlide" class="bg-transparent border-none rounded-none hover:bg-white/10 text-white inline-flex justify-center items-center cursor-pointer px-3"><i :class="slideButtonIcon"></i></button>
-                    <span v-if="images" class="flex items-center gap-4 ml-3">
-                        <span class="text-sm">{{ activeIndex + 1 }}/{{ images.length }}</span>
-                        <span class="font-bold text-sm">{{ images[activeIndex].title }}</span>
-                        <span class="text-sm">{{ images[activeIndex].alt }}</span>
-                    </span>
-                    <button type="button" @click="toggleFullScreen" class="bg-transparent border-none rounded-none hover:bg-white/10 text-white inline-flex justify-center items-center cursor-pointer px-3 ml-auto">
-                        <i :class="fullScreenIcon"></i>
-                    </button>
-                </div>
-            </template>
-        </Galleria>
-    </div>
 
-    <button @click="$vueFlux.show('next')">NEXT</button>
+
+                        <template #arrow-left>
+                            <i class="fas fa-chevron-left"></i>
+                             
+                        </template>
+
+                        <template #arrow-right>
+                            <i class="fas fa-chevron-right"></i>
+                        </template>
+                       
+                </vueper-slides>
+
+
+
+
+   
 </template>
 
 
 
 <style>
+.bordes-redondeados{
+  border-radius: 2em; /* Ajusta este valor según tu preferencia */
+  overflow: hidden;
+}
+
 .vueperslides__bullet .default {
   background-color: rgba(0, 0, 0, 0.3);
   border: none;
@@ -168,6 +170,10 @@ const welcomeMessage = 'Bienvenido';
   opacity: 0.8;
 }
 
-
+.vueperslides__arrow {
+  background:#cd171e !important;
+  width: 40px !important;
+  height: 40px !important;
+}
 
 </style>
