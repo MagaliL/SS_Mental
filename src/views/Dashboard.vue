@@ -14,7 +14,7 @@ const welcomeMessage = 'Bienvenido';
 <template>
 
     <vueper-slides :infinite="true" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
-        <vueper-slide title="Prueba" content="Funciona?"></vueper-slide>
+        <vueper-slide title="Prueba" content="Funciona?">Aquí debería haber texto</vueper-slide>
 
                         <template #arrow-left>
                             <i class="icon icon-arrow-left" />
@@ -163,8 +163,11 @@ const welcomeMessage = 'Bienvenido';
 
 .vueperslides__bullet span {
   display: block;
-  color: #fff;
+  color: #24417c;
   font-size: 10px;
   opacity: 0.8;
 }
+
+
+
 </style>
