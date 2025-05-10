@@ -13,7 +13,48 @@ components: { VueperSlides, VueperSlide }
 <!-- Html del homepage, sus estilos están en _main.scss -->
 
 <template>
+  <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
+        <vueper-slide
+      title="Emergencia"
+      
+      :style="{
+        backgroundColor: '#e42936',
+        color: 'white',
+        fontSize: '3rem'
+        
+      }"
+    />
+        <vueper-slide
+      title="Agenda tu Primera Cita"
+      :style="{
+        backgroundColor: '#24417c',
+        color: 'white',
+        fontSize: '3rem'
+        
+      }"
+    />
+   
+       <vueper-slide
+      title="Actividades"
+      :style="{
+        backgroundColor: '#e85d26',
+        color: 'white',
+        fontSize: '3rem'
+        
+      }"
+    />
+                        <template #arrow-left>
+                            <i class="fas fa-chevron-left"></i>
+                             
+                        </template>
 
+                        <template #arrow-right>
+                            <i class="fas fa-chevron-right"></i>
+                        </template>
+                       
+                </vueper-slides>
+
+<br><br><br>
     <div class="Homepage_container">
 
         <div class="columna">
@@ -75,7 +116,7 @@ components: { VueperSlides, VueperSlide }
             <div class="redes_sociales">
                  <center><h1 class="titulo_home">Te acompañamos en el cuidado de tu salud mental</h1></center> <br>
 
-                 <p>Sabemos que los desafíos académicos pueden ser exigentes, pero también sabemos que cuidar de tu salud física y mental es clave para alcanzar tus metas. ​La Facultad de Ingeniería no es solo un lugar para desarrollar habilidades técnicas, sino también para crecer como personas integras y equilibradas.</p>
+                 <p style="text-align: justify;">Sabemos que los desafíos académicos pueden ser exigentes, pero también sabemos que cuidar de tu salud física y mental es clave para alcanzar tus metas. ​La Facultad de Ingeniería no es solo un lugar para desarrollar habilidades técnicas, sino también para crecer como personas integras y equilibradas.</p>
                 <center>
                 <br>
                 <br>
@@ -94,49 +135,7 @@ components: { VueperSlides, VueperSlide }
         <br /><br /><br />
     </div>
 
-        <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
-        <vueper-slide
-      title="Emergencia"
       
-      :style="{
-        backgroundColor: '#e42936',
-        color: 'white',
-        fontSize: '3rem'
-        
-      }"
-    />
-        <vueper-slide
-      title="Agenda tu Primera Cita"
-      :style="{
-        backgroundColor: '#24417c',
-        color: 'white',
-        fontSize: '3rem'
-        
-      }"
-    />
-   
-       <vueper-slide
-      title="Actividades"
-      :style="{
-        backgroundColor: '#e85d26',
-        color: 'white',
-        fontSize: '3rem'
-        
-      }"
-    />
-
-
-
-                        <template #arrow-left>
-                            <i class="fas fa-chevron-left"></i>
-                             
-                        </template>
-
-                        <template #arrow-right>
-                            <i class="fas fa-chevron-right"></i>
-                        </template>
-                       
-                </vueper-slides>
 
 
 
@@ -145,8 +144,8 @@ components: { VueperSlides, VueperSlide }
 </template>
 
 
-
 <style>
+
 .bordes-redondeados{
   border-radius: 2em; /* Ajusta este valor según tu preferencia */
   overflow: hidden;
