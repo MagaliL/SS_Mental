@@ -16,7 +16,7 @@ components: { VueperSlides, VueperSlide }
   <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
         <vueper-slide
       title="Emergencia"
-      
+      image="public\demo\images\home\slide1.png"
       :style="{
         backgroundColor: '#e42936',
         color: 'white',
@@ -60,7 +60,9 @@ components: { VueperSlides, VueperSlide }
         <div class="columna">
             <section class="hero-section">
 
-                <center><img src="/public/demo/images/home/facultad_ingenieria.jpg" style="border-radius: 2em;" ></center>
+                <!-- <center><img src="/public/demo/images/home/facultad_ingenieria.jpg" style="border-radius: 2em;" ></center> -->
+
+                <center><img class="imagen1" src="/public/demo/images/home/PSMFI-LOG.png" alt="Programa de Salud Mental de la Facultad de Ingeniería" /></center>
 
                 <!-- <center><h1 class="titulo_home">Estamos para escucharte</h1></center>
                 <center><h2 class="subtitulo_home">Acompañamiento a tu salud mental</h2></center> -->
@@ -72,40 +74,6 @@ components: { VueperSlides, VueperSlide }
             </div> -->
             <br /><br />
 
-            <!-- Botones -->
-
-            <div class="Botones_home">
-                <!-- Botón AGENDAR PRIMERA CITA (enlace externo) -->
-                <a
-                    href="https://forms.gle/ewEaMeabtZN2pbBU6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="primary-button1 inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                >
-                    AGENDAR PRIMERA CITA
-                </a>
-                <br />
-
-                <!-- Botones originales (para comparación) -->
-                <router-link to="/emergencia" custom v-slot="{ navigate }">
-                    <button
-                        class="primary-button2 inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                        @click="navigate"
-                    >
-                        EMERGENCIA
-                    </button>
-                </router-link>
-                <br />
-
-                <router-link to="/actividades" custom v-slot="{ navigate }">
-                    <button
-                        class="primary-button3 inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-                        @click="navigate"
-                    >
-                        ACTIVIDADES
-                    </button>
-                </router-link>
-            </div>
         </div>
 
         <!-- Hasta aquí llega la primera columna  -->
@@ -114,27 +82,24 @@ components: { VueperSlides, VueperSlide }
             <!-- Redes sociales -->
 
             <div class="redes_sociales">
-                 <center><h1 class="titulo_home">Te acompañamos en el cuidado de tu salud mental</h1></center> <br>
+                <br><br><br><br>
+                 <center><h1 class="titulo_home">Te acompañamos en el cuidado de tu salud mental</h1></center> <br><br><br>
 
                  <p style="text-align: justify;">Sabemos que los desafíos académicos pueden ser exigentes, pero también sabemos que cuidar de tu salud física y mental es clave para alcanzar tus metas. ​La Facultad de Ingeniería no es solo un lugar para desarrollar habilidades técnicas, sino también para crecer como personas integras y equilibradas.</p>
-                <center>
                 <br>
                 <br>
-                <br>
-                    <b><h4 class="Info">Síguenos en Facebook</h4></b>
-                </center>
-                <center>
-                    <button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button>
-                </center>
+                <br>     
             </div>
             <br /><br /><br />
 
-            <center><img class="imagen1" src="/public/demo/images/home/PSMFI-LOG.png" alt="Programa de Salud Mental de la Facultad de Ingeniería" /></center>
-        </div>
 
+        </div>
         <br /><br /><br />
     </div>
 
+    <center><b><h4 class="Info">Síguenos en Facebook</h4></b></center>            
+    <center><button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button>
+                </center>
       
 
 
