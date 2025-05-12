@@ -9,7 +9,7 @@
       
 
 
-      <!-- Enlace de vuelta al home -->
+      <!-- Enlace de vuelta al home Acá no va el calendario-->
       <router-link to="/" class="nav-link">Volver al inicio</router-link>
     </div>
   </template>

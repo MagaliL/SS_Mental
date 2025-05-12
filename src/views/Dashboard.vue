@@ -13,35 +13,26 @@ components: { VueperSlides, VueperSlide }
 <!-- Html del homepage, sus estilos están en _main.scss -->
 
 <template>
-  <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true"  >
-        <vueper-slide
-      title="Emergencia"
-      image="public\demo\images\home\slide1.png"
-      :style="{
-        backgroundColor: '#e42936',
-        color: 'white',
-        fontSize: '3rem'
-        
-      }"
-    />
-        <vueper-slide
-      title="Agenda tu Primera Cita"
-      :style="{
-        backgroundColor: '#24417c',
-        color: 'white',
-        fontSize: '3rem'
-        
-      }"
-    />
+  <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true" :slides="images"  >
+      
+         <vueper-slide image="/demo/images/home/slide1.png"
+          :style="{ color: 'white', fontSize: '3rem' }"
+          />
+
+        <vueper-slide image="/demo/images/home/Emergencia.png" 
+        :style="{cursor: 'pointer', color: 'white', fontSize: '3rem'}" 
+        @click.native="$router.push('/emergencia')"
+        />
+
+
+        <vueper-slide image="/demo/images/home/Agendar.png"
+        :style="{ cursor: 'pointer', color: 'white',fontSize: '3rem'}"
+        @click.native="$router.push('/agendar')"
+        />
    
-       <vueper-slide
-      title="Actividades"
-      :style="{
-        backgroundColor: '#e85d26',
-        color: 'white',
-        fontSize: '3rem'
-        
-      }"
+       <vueper-slide image="/demo/images/home/Actividades.png"
+       :style="{cursor: 'pointer', color: 'white',fontSize: '3rem' }"
+       @click.native="$router.push('/preventivas')"
     />
                         <template #arrow-left>
                             <i class="fas fa-chevron-left"></i>
@@ -79,7 +70,7 @@ components: { VueperSlides, VueperSlide }
         <!-- Hasta aquí llega la primera columna  -->
 
         <div class="columna">
-            <!-- Redes sociales -->
+           
 
             <div class="redes_sociales">
                 <br><br><br><br>
@@ -87,19 +78,33 @@ components: { VueperSlides, VueperSlide }
 
                  <p style="text-align: justify;">Sabemos que los desafíos académicos pueden ser exigentes, pero también sabemos que cuidar de tu salud física y mental es clave para alcanzar tus metas. ​La Facultad de Ingeniería no es solo un lugar para desarrollar habilidades técnicas, sino también para crecer como personas integras y equilibradas.</p>
                 <br>
+
+                 <center><h5 >Tenemos a tu disposición las siguientes áreas</h5 ></center>
                 <br>
-                <br>     
-            </div>
-            <br /><br /><br />
+                
+                </br>
 
-
-        </div>
-        <br /><br /><br />
-    </div>
+                <ul><li>Prevención y fortalecimiento</li>
+                <li>Canalización y seguimiento</li>
+                <li>Acompañamiento y valoración temprana</li>
+              <li>Evaluación</li></ul>
 
     <center><b><h4 class="Info">Síguenos en Facebook</h4></b></center>            
     <center><button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button>
                 </center>
+
+
+            </div>
+         
+
+
+        </div>
+
+        
+  
+    </div>
+
+    
       
 
 
