@@ -45,11 +45,12 @@ components: { VueperSlides, VueperSlide }
                        
                 </vueper-slides>
 
-<br><br><br>
+
     <div class="Homepage_container">
 
         <div class="columna">
             <section class="hero-section">
+              <br><br><br><br><br>
 
                 <!-- <center><img src="/public/demo/images/home/facultad_ingenieria.jpg" style="border-radius: 2em;" ></center> -->
 
@@ -63,8 +64,7 @@ components: { VueperSlides, VueperSlide }
                     <b><p>Horario de atención del programa</p></b> <b><p>De lunes a viernes de 9:00 a 19:00</p></b>
                 </center>
             </div> -->
-            <br /><br />
-
+           
         </div>
 
         <!-- Hasta aquí llega la primera columna  -->
@@ -73,41 +73,34 @@ components: { VueperSlides, VueperSlide }
            
 
             <div class="redes_sociales">
-                <br><br><br><br>
-                 <center><h1 class="titulo_home">Te acompañamos en el cuidado de tu salud mental</h1></center> <br><br><br>
+                <br><br><br><br><br>
+                 <center><h1 class="titulo_home">Te acompañamos en el cuidado de tu salud mental</h1></center> <br><br>
 
                  <p style="text-align: justify;">Sabemos que los desafíos académicos pueden ser exigentes, pero también sabemos que cuidar de tu salud física y mental es clave para alcanzar tus metas. ​La Facultad de Ingeniería no es solo un lugar para desarrollar habilidades técnicas, sino también para crecer como personas integras y equilibradas.</p>
                 <br>
 
                  <center><h5 >Tenemos a tu disposición las siguientes áreas</h5 ></center>
                 <br>
-                
                 </br>
 
-                <ul><li>Prevención y fortalecimiento</li>
-                <li>Canalización y seguimiento</li>
-                <li>Acompañamiento y valoración temprana</li>
-              <li>Evaluación</li></ul>
+                <ul><li><p>→ Prevención y fortalecimiento</p></li>
+                <li><p>→ Canalización y seguimiento</p></li>
+                <li><p>→ Acompañamiento y valoración temprana</p></li>
+              <li><p>→ Evaluación</p></li></ul>
 
-    <center><b><h4 class="Info">Síguenos en Facebook</h4></b></center>            
-    <center><button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button>
-                </center>
-
-
+    
             </div>
-         
-
+        
 
         </div>
 
         
-  
     </div>
-
-    
+    <br><br><br>
+    <center><b><h4 class="Info">Síguenos en Facebook</h4></b></center>            
+    <center><button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button>
+                </center>
       
-
-
 
 
    
