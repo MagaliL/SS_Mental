@@ -5,15 +5,14 @@ import 'vueperslides/dist/vueperslides.css';
 
 
 
-// Contenido personalizado aquí:
-const welcomeMessage = 'Bienvenido';
-components: { VueperSlides, VueperSlide }
-</script>
+components: {VueperSlides, VueperSlide }
 
+
+</script>
 <!-- Html del homepage, sus estilos están en _main.scss -->
 
 <template>
-  <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplayduration="2000" :pause-autoplay-on-hover="true" :slides="images"  >
+  <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplay-duration="2000" :pause-autoplay-on-hover="true" :slides="images"  >
       
          <vueper-slide image="/demo/images/home/slide1.png"
           :style="{ color: 'white', fontSize: '3rem' }"

@@ -1,190 +1,291 @@
 <script>
-// Importamos los componentes necesarios de vueper-slides
-import { VueperSlide, VueperSlides } from "vueperslides";
-import "vueperslides/dist/vueperslides.css";
+  // Importaciones necesarias
+import { VueperSlide, VueperSlides } from 'vueperslides'; // Componentes del carrusel
+import 'vueperslides/dist/vueperslides.css'; // Estilos base del carrusel
 
 export default {
-  name: "InfographicCarousel",
-  components: {
-    VueperSlides,
-    VueperSlide,
+  name: 'SmartInfographicCarousel', // Nombre significativo del componente
+  components: { VueperSlides, VueperSlide }, // Componentes registrados
+  
+  // PROPS: Configuración externa del componente
+  props: {
+    // Configuración básica del carrusel
+    carouselConfig: {
+      type: Object,
+      default: () => ({
+        autoPlay: false,    // Auto-reproducción desactivada por defecto
+        infiniteLoop: true, // Navegación circular activada
+        showArrows: true,   // Flechas visibles
+        showBullets: true   // Puntos de navegación visibles
+      }),
+      validator: config => {
+        // Validamos que la configuración tenga el formato correcto
+        const validKeys = ['autoPlay', 'infiniteLoop', 'showArrows', 'showBullets'];
+        return Object.keys(config).every(key => validKeys.includes(key));
+      }
+    },
+    
+    // Array de slides (requerido)
+    slidesData: {
+      type: Array,
+      required: true,
+      validator: slides => slides.every(slide => {
+        // Validación estricta de cada slide
+        const validTypes = ['image', 'pdf'];
+        const hasValidType = validTypes.includes(slide.type);
+        const hasValidSrc = typeof slide.src === 'string' && slide.src.length > 0;
+        
+        // Validaciones específicas por tipo
+        if (slide.type === 'image') {
+          return hasValidType && hasValidSrc;
+        } else if (slide.type === 'pdf') {
+          const hasValidThumbnail = !slide.thumbnail || typeof slide.thumbnail === 'string';
+          return hasValidType && hasValidSrc && hasValidThumbnail;
+        }
+        return false;
+      })
+    },
+    
+    // Configuración de rutas
+    pathsConfig: {
+      type: Object,
+      default: () => ({
+        images: '@/assets/carousel/', // Ruta base para imágenes
+        pdfs: '/documents/',          // Ruta base para PDFs
+        thumbs: '/thumbnails/'        // Ruta base para miniaturas
+      })
+    },
+    
+    // Estilos personalizables
+    uiStyles: {
+      type: Object,
+      default: () => ({
+        titleColor: '#ffffff',       // Color del título
+        pdfButtonColor: '#e74c3c',  // Color del botón PDF
+        maxHeight: '70vh'           // Altura máxima del carrusel
+      })
+    }
   },
+  
+  // DATA: Estado interno del componente
   data() {
     return {
-      // Datos de cada slide (imágenes y PDFs)
-      slides: [
-        {
-          type: "image", // Tipo de contenido
-          src: "infografia1.jpg", // Nombre del archivo (debe estar en assets/images)
-          title: "Guía de Prevención", // Título descriptivo
-        },
-        {
-          type: "pdf",
-          src: "manual.pdf", // Nombre del archivo (debe estar en public/pdfs)
-          thumbnail: "/pdf-thumbs/manual-thumb.jpg", // Ruta de la miniatura
-          title: "Manual Completo (PDF)",
-        },
-      ],
+      defaultPdfThumbnail: '/defaults/pdf-thumbnail.jpg', // Miniatura por defecto
+      isMounted: false, // Flag para controlar montaje
+      currentSlideIndex: 0 // Slide actualmente visible
     };
   },
-  methods: {
-    // Método para abrir imagen en lightbox (ampliada)
-    openLightbox(imageSrc) {
-      console.log("Abrir imagen:", imageSrc);
-      // Aquí podrías integrar un lightbox como vue-easy-lightbox
+  
+  // COMPUTED: Propiedades calculadas
+  computed: {
+    // Procesa los slides con rutas completas y valores por defecto
+    processedSlides() {
+      return this.slidesData.map(slide => ({
+        ...slide,
+        // Añade valores por defecto si no están especificados
+        title: slide.title || '',
+        altText: slide.altText || slide.title || '',
+        buttonText: slide.buttonText || 'Ver documento',
+        // Procesa la miniatura para PDFs
+        thumbnail: slide.type === 'pdf' 
+          ? this.resolveThumbnailPath(slide)
+          : null
+      }));
     },
+    
+    // Extrae configuraciones para mejor legibilidad
+    showNavigationArrows() {
+      return this.carouselConfig.showArrows;
+    },
+    showNavigationBullets() {
+      return this.carouselConfig.showBullets;
+    },
+    autoPlay() {
+      return this.carouselConfig.autoPlay;
+    },
+    infiniteLoop() {
+      return this.carouselConfig.infiniteLoop;
+    },
+    titleColor() {
+      return this.uiStyles.titleColor;
+    }
   },
+  
+  // MÉTODOS: Lógica del componente
+  methods: {
+    // Genera un hash único para la key (mejor rendimiento)
+    hashCode(str) {
+      return md5(str).substring(0, 8); // Usamos solo los primeros 8 caracteres
+    },
+    
+    // Resuelve la ruta completa para assets
+    resolveAssetPath(slide) {
+      if (slide.type === 'image') {
+        // En desarrollo, usa require para que webpack procese la imagen
+        if (process.env.NODE_ENV === 'development') {
+          try {
+            return require(`@/assets/${this.pathsConfig.images}${slide.src}`);
+          } catch (e) {
+            console.error(`No se pudo cargar la imagen: ${slide.src}`);
+            return require('@/assets/fallback-image.jpg');
+          }
+        }
+        // En producción, usa la ruta directa
+        return `${this.pathsConfig.images}${slide.src}`;
+      }
+      return `${this.pathsConfig.pdfs}${slide.src}`;
+    },
+    
+    // Resuelve la ruta para miniaturas de PDF
+    resolveThumbnailPath(slide) {
+      if (!slide.thumbnail) return this.defaultPdfThumbnail;
+      return `${this.pathsConfig.thumbs}${slide.thumbnail}`;
+    },
+    
+    // Maneja el clic en un slide
+    handleSlideClick(slide) {
+      if (slide.type === 'image') {
+        this.$emit('image-click', slide); // Evento personalizado
+      }
+      // Para PDFs, el manejo es específico en handlePdfClick
+    },
+    
+    // Manejo específico para PDFs
+    handlePdfClick(slide) {
+      const pdfPath = `${this.pathsConfig.pdfs}${slide.src}`;
+      if (slide.openInNewTab) {
+        window.open(pdfPath, '_blank', 'noopener,noreferrer');
+      } else {
+        this.$emit('pdf-open', { slide, path: pdfPath });
+      }
+    },
+    
+    // Callback cuando el carrusel está listo
+    onCarouselReady() {
+      this.isMounted = true;
+      this.$emit('carousel-ready'); // Evento de inicialización
+    },
+    
+    // Método público para cambiar slide
+    goToSlide(index) {
+      if (this.$refs.carousel) {
+        this.$refs.carousel.goToSlide(index);
+      }
+    }
+  },
+  
+  // HOOKS DEL CICLO DE VIDA
+  mounted() {
+    console.log('Carrusel montado con', this.slidesData.length, 'slides');
+  }
 };
 </script>
 
-
-<template>
-  <!-- Contenedor principal del carrusel -->
-  <div class="carousel-container">
-    <!-- 
-      VueperSlides es el componente principal del carrusel
-      :slides -> Número total de slides
-      :bullets -> Muestra puntos de navegación
-      :arrows -> Muestra flechas de navegación
-    -->
-    <vueper-slides
-      :slides="slides.length"
-      :bullets="true"
-      :arrows="true"
-      class="infographic-carousel"
-    >
-      <!-- Iteramos sobre cada slide definido en data() -->
-      <vueper-slide v-for="(slide, index) in slides" :key="index">
-        <!-- Contenido personalizado para cada slide -->
-        <template #content>
-          <!-- Si el slide es una IMAGEN -->
-          <div v-if="slide.type === 'image'" class="image-slide">
-            <!-- 
-              Mostramos la imagen
-              :src -> Ruta de la imagen
-              @click -> Al hacer clic podemos ampliarla
-            -->
-            <img
-              :src="require(`@/assets/images/${slide.src}`)"
-              :alt="slide.title"
-              class="slide-image"
-              @click="openLightbox(slide.src)"
-            />
-            <!-- Título descriptivo -->
-            <p class="image-title">{{ slide.title }}</p>
-          </div>
-
-          <!-- Si el slide es un PDF -->
-          <div v-else-if="slide.type === 'pdf'" class="pdf-slide">
-            <!-- 
-              Enlace para descargar/ver el PDF
-              target="_blank" abre en nueva pestaña
-            -->
-            <a
-              :href="`/pdfs/${slide.src}`"
-              target="_blank"
-              class="pdf-link"
-            >
-              <!-- Mostramos una miniatura del PDF -->
-              <img
-                :src="slide.thumbnail || '/pdf-thumbs/default.png'"
-                :alt="slide.title"
-                class="pdf-thumbnail"
-              />
-              <!-- Información del PDF -->
-              <div class="pdf-info">
-                <span class="pdf-title">{{ slide.title }}</span>
-                <button class="download-btn">
-                  <i class="fas fa-download"></i> Descargar
-                </button>
-              </div>
-            </a>
-          </div>
-        </template>
-      </vueper-slide>
-    </vueper-slides>
-  </div>
-</template>
-
 <style scoped>
-/* Estilos generales del contenedor */
-.carousel-container {
+/* ESTILOS PRINCIPALES */
+.infographic-carousel {
+  position: relative;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-/* Estilos para slides de imágenes */
-.image-slide {
-  text-align: center;
+.carousel-main {
+  height: 100%;
 }
 
+/* CONTENEDOR DE SLIDES */
+.slide-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* ESTILOS PARA IMÁGENES */
 .slide-image {
   max-width: 100%;
-  max-height: 70vh;
-  cursor: pointer;
-  transition: transform 0.3s;
+  max-height: v-bind('uiStyles.maxHeight');
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 .slide-image:hover {
   transform: scale(1.02);
 }
 
-.image-title {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-/* Estilos para slides de PDF */
-.pdf-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.pdf-link {
-  text-decoration: none;
-  color: inherit;
+/* ESTILOS PARA PDFs */
+.pdf-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
 }
 
 .pdf-thumbnail {
   max-width: 200px;
+  max-height: 200px;
   border: 2px solid #eee;
   margin-bottom: 15px;
 }
 
-.pdf-info {
-  text-align: center;
-}
-
-.download-btn {
-  background-color: #42b983;
+.pdf-action-button {
+  background-color: v-bind('uiStyles.pdfButtonColor');
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.download-btn:hover {
-  background-color: #369f6e;
+.pdf-action-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
 
-/* Responsive design */
+/* TÍTULO DEL SLIDE */
+.slide-title {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: v-bind('uiStyles.titleColor');
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
-  .slide-image {
-    max-height: 50vh;
+  .infographic-carousel {
+    border-radius: 0;
   }
   
   .pdf-thumbnail {
     max-width: 150px;
+  }
+  
+  .slide-title {
+    font-size: 1rem;
+    bottom: 10px;
   }
 }
 </style>
