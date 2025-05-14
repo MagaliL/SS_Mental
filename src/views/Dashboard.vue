@@ -1,68 +1,101 @@
 <script setup>
 import '@fortawesome/fontawesome-free/css/all.css'; // Importa Font Awesome
-import { VueperSlide, VueperSlides } from 'vueperslides';
+import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { VueperSlides } from 'vueperslides';
 import 'vueperslides/dist/vueperslides.css';
 
+const router = useRouter()
 
+// Definición de imágenes para el primer carrusel
 
-components: {VueperSlides, VueperSlide }
+const carruselPrincipal = ref( [
+  {
+    image: new URL('@/assets/imagenes/images-carousel/principal/slide1.png', import.meta.url).href,
+    
+  },
+  {
+    image: new URL('@/assets/imagenes/images-carousel/principal/Emergencia.png', import.meta.url).href,
+    style: { cursor: 'pointer'},
+    click: () => router.push('/emergencia')
+  },
+  {
+    image: new URL('@/assets/imagenes/images-carousel/principal/Agendar.png', import.meta.url).href,
+    click: () => router.push('/agendar')
+  },
+  {
+    image: new URL('@/assets/imagenes/images-carousel/principal/Actividades.png', import.meta.url).href,
+    click: () => router.push('/preventivas')
+  },
 
+])
+
+// Definir imágenes para el carrusel de infografías
+const infografias = ref( [
+  {
+    image: new URL('@/assets/imagenes/images-carousel/infografias/AyS.png', import.meta.url).href
+  },
+  {
+    image: new URL('@/assets/imagenes/images-carousel/infografias/orquesta.png', import.meta.url).href
+  },
+  {
+    image: new URL('@/assets/imagenes/images-carousel/infografias/Pautas_para_la-atencion.png', import.meta.url).href
+  },
+  {
+    image: new URL('@/assets/imagenes/images-carousel/infografias/Proceso.png', import.meta.url).href
+  },
+  {
+    image: new URL('@/assets/imagenes/images-carousel/infografias/Seguro.png', import.meta.url).href
+  },
+])
+
+// Manejo de errores
+onMounted(() => {
+  try {
+    // Código que podría fallar durante el montaje
+  } catch (error) {
+    console.error('Error en mounted:', error)
+  }
+})
+
+// components: {VueperSlides, VueperSlide }
 
 </script>
+
 <!-- Html del homepage, sus estilos están en _main.scss -->
 
 <template>
-  <vueper-slides class="bordes-redondeados" :bullets="true" :autoplay="true" :autoplay-duration="2000" :pause-autoplay-on-hover="true" :slides="images"  >
-      
-         <vueper-slide image="/demo/images/home/slide1.png"
-          :style="{ color: 'white', fontSize: '3rem' }"
-          />
+  <!-- Primer carrusel -->
+  <div v-if="carruselPrincipal.length">
+    <vueper-slides 
+    class="bordes-redondeados" 
+      :bullets="true" 
+      :autoplay="true" 
+      :autoplay-duration="2000" 
+      :pause-autoplay-on-hover="true" 
+      :slides="carruselPrincipal">
+          
+          <template #arrow-left>
+            <i class="fas fa-chevron-left"></i>
+                              
+          </template>
 
-        <vueper-slide image="/demo/images/home/Emergencia.png" 
-        :style="{cursor: 'pointer', color: 'white', fontSize: '3rem'}" 
-        @click.native="$router.push('/emergencia')"
-        />
-
-
-        <vueper-slide image="/demo/images/home/Agendar.png"
-        :style="{ cursor: 'pointer', color: 'white',fontSize: '3rem'}"
-        @click.native="$router.push('/agendar')"
-        />
-   
-       <vueper-slide image="/demo/images/home/Actividades.png"
-       :style="{cursor: 'pointer', color: 'white',fontSize: '3rem' }"
-       @click.native="$router.push('/preventivas')"
-    />
-                        <template #arrow-left>
-                            <i class="fas fa-chevron-left"></i>
-                             
-                        </template>
-
-                        <template #arrow-right>
-                            <i class="fas fa-chevron-right"></i>
-                        </template>
-                       
-                </vueper-slides>
+          <template #arrow-right>
+            <i class="fas fa-chevron-right"></i>
+          </template>
+                        
+    </vueper-slides>
+  </div>
 
 
-    <div class="Homepage_container">
-
+  <div class="Homepage_container">
         <div class="columna">
             <section class="hero-section">
               <br><br><br><br><br>
 
-                <!-- <center><img src="/public/demo/images/home/facultad_ingenieria.jpg" style="border-radius: 2em;" ></center> -->
+                <div  class="image-center"><img src="@/assets/imagenes/images-home/PSMFI-LOG.png" alt="Programa de Salud Mental de la Facultad de Ingeniería" /></div>
 
-                <center><img class="imagen1" src="/public/demo/images/home/PSMFI-LOG.png" alt="Programa de Salud Mental de la Facultad de Ingeniería" /></center>
-
-                <!-- <center><h1 class="titulo_home">Estamos para escucharte</h1></center>
-                <center><h2 class="subtitulo_home">Acompañamiento a tu salud mental</h2></center> -->
             </section>
-            <!-- <div class="Info">
-                <center>
-                    <b><p>Horario de atención del programa</p></b> <b><p>De lunes a viernes de 9:00 a 19:00</p></b>
-                </center>
-            </div> -->
            
         </div>
 
@@ -70,36 +103,54 @@ components: {VueperSlides, VueperSlide }
 
         <div class="columna">
            
-
             <div class="redes_sociales">
                 <br><br><br><br><br>
-                 <center><h1 class="titulo_home">Te acompañamos en el cuidado de tu salud mental</h1></center> <br><br>
+                 <h1 class="titulo_home" style="text-align: center;">Te acompañamos en el cuidado de tu salud mental</h1> <br><br>
 
                  <p style="text-align: justify;">Sabemos que los desafíos académicos pueden ser exigentes, pero también sabemos que cuidar de tu salud física y mental es clave para alcanzar tus metas. ​La Facultad de Ingeniería no es solo un lugar para desarrollar habilidades técnicas, sino también para crecer como personas integras y equilibradas.</p>
                 <br>
 
-                 <center><h5 >Tenemos a tu disposición las siguientes áreas</h5 ></center>
-                <br>
-                </br>
+                 <h5 style="text-align: center;">Tenemos a tu disposición las siguientes áreas</h5 >
+                <br> </br>
 
                 <ul><li><p>→ Prevención y fortalecimiento</p></li>
                 <li><p>→ Canalización y seguimiento</p></li>
                 <li><p>→ Acompañamiento y valoración temprana</p></li>
-              <li><p>→ Evaluación</p></li></ul>
+                <li><p>→ Evaluación</p></li></ul>
 
-    
             </div>
         
-
         </div>
-
-        
-    </div>
+   
+  </div>
     <br><br><br>
-    <center><b><h4 class="Info">Síguenos en Facebook</h4></b></center>            
-    <center><button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button>
-                </center>
+    <b><h4 class="Info" style="text-align: center;">Síguenos en Facebook</h4></b>         
+    <div style="display: flex; align-items: center; "><button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button></div>
+    <br><br><br><br><br><br>
       
+
+<!--  Para el carrusel de infografías -->
+<div v-if="infografias">
+     <vueper-slides :slide-ratio="16 / 9" 
+    :bullets="true" 
+    :autoplay="true" 
+    :autoplay-duration="2000" 
+    :pause-autoplay-on-hover="true" 
+    class="infografia-carrusel"
+    :slides="infografias">
+
+          
+      <template #arrow-left>
+        <i class="fas fa-chevron-left"></i>
+                             
+      </template>
+
+      <template #arrow-right>
+        <i class="fas fa-chevron-right"></i>
+      </template>
+
+    </vueper-slides>
+</div>
 
 
    
@@ -107,6 +158,24 @@ components: {VueperSlides, VueperSlide }
 
 
 <style>
+
+
+/* Estilos para evitar problemas con infografías grandes */
+.infografia-carrusel {
+  width: 100%;
+  max-width: 1200px; /* Opcional: si quieres limitar el ancho */
+  margin: 0 auto;
+}
+
+.infografia-carrusel .vueper-slide {
+  background: #f5f5f5; /* Fondo para slides con espacios vacíos */
+}
+
+.infografia-carrusel .vueper-slide__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Escala sin recortar, manteniendo proporción */
+}
 
 .bordes-redondeados{
   border-radius: 2em; /* Ajusta este valor según tu preferencia */
@@ -135,6 +204,12 @@ components: {VueperSlides, VueperSlide }
   background:#cd171e !important;
   width: 40px !important;
   height: 40px !important;
+}
+
+.image-center { 
+  display: flex;
+  justify-content: center;
+  padding: 1rem; /* Espacio alrededor */
 }
 
 </style>

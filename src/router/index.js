@@ -6,6 +6,17 @@ import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
+         {
+            path: '/login',
+            redirect: '/auth/login' // Redirección permanente
+        },
+
+        {
+            path: '/auth/login',
+            name: 'login',
+            component: () => import('@/views/pages/auth/Login.vue')
+        },
+
         {
             path: '/',
             component: AppLayout,

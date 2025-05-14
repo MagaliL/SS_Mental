@@ -1,5 +1,4 @@
 <script setup>
-
 </script>
 
 <template>
@@ -12,7 +11,9 @@
             <div class="logo_izquierda">
                 <ul>
                     <!-- rel="noopener noreferrer" en la etiqueta <a> es para seguridad ya que se van a abrir llas páginas en una pestaña nueva. -->
-                    <li> <a href="https://www.unam.mx/" target="_blank" rel="noopener noreferrer" class="logoUnam"><img src="/public/demo/images/logos/logo_1.png" alt=""></a></li> 
+                    <li> <a href="https://www.unam.mx/" target="_blank" rel="noopener noreferrer" class="logoUnam"><img src="@/assets/imagenes/logos/logo_1.png" alt="Logo UNAM"></a></li> 
+
+                  
                 </ul>
                 <br>
                 
@@ -26,7 +27,7 @@
             </div>
             
             <div class="logo_derecho">
-                <ul><li><a href="https://www.ingenieria.unam.mx/" target="_blank" rel="noopener noreferrer" class="logoFi"><img src="/public/demo/images/logos/logo_2.png" alt=""></a></li>
+                <ul><li><a href="https://www.ingenieria.unam.mx/" target="_blank" rel="noopener noreferrer" class="logoFi"><img src="@/assets/imagenes/logos/logo_2.png" alt="Logo de la Facultad de Ingeniería"></a></li>
                 </ul>
             </div>
 

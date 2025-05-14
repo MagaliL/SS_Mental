@@ -12,7 +12,8 @@
                 <i class="pi pi-bars"></i>
             </button> -->
             <router-link to="/" class="layout-topbar-logo p-6">
-                <img src="/public/demo/images/home/PSMFI-LOG.png" alt="Logo" class="h-12" />
+                <img src="@/assets/imagenes/images-home/PSMFI-LOG.png" alt="Logo" class="h-12" />
+              
             </router-link>
         </div>
 
