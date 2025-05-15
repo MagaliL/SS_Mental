@@ -204,6 +204,7 @@ onMounted(() => {
       </template>
 
     </vueper-slides>
+    <br><br><br>
 </div>
 
 
@@ -219,6 +220,9 @@ onMounted(() => {
   width: 100%;
   max-width: 1200px; /* Opcional: si quieres limitar el ancho */
   margin: 0 auto;
+  border-radius: 2em;
+  overflow: hidden;
+
 }
 
 .infografia-carrusel .vueper-slide {
@@ -232,7 +236,7 @@ onMounted(() => {
 }
 
 .bordes-redondeados{
-  border-radius: 2em; /* Ajusta este valor según tu preferencia */
+  border-radius: 2em; 
   overflow: hidden;
 }
 
