@@ -18,7 +18,7 @@
         </div>
 
         <!-- Menú de Navegación -->
-        <nav class="hidden lg:flex mx-auto space-x-10 items-center h-full">
+        <nav class="hidden lg:flex mx-auto space-x-20 items-center h-full">
             <!-- Añade items-center y h-full -->
             <router-link to="/" class="text-blue-600 font-semibold py-2">Inicio</router-link>
             <router-link to="/emergencia" class="text-blue-900 font-semibold py-2">Emergencia</router-link>

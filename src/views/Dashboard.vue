@@ -28,15 +28,17 @@ const carruselPrincipal = ref([
   {
     image: Emergencia,
     style: { cursor: 'pointer' },
-    click: () => router.push('/emergencia')
+    clickHandler: () => router.push('/emergencia') // ← Función personalizada
   },
   {
     image: Agendar,
-    click: () => router.push('/agendar')
+    style: { cursor: 'pointer' },
+    clickHandler: () => router.push('/agendar')
   },
   {
     image: Actividades,
-    click: () => router.push('/preventivas')
+    style: { cursor: 'pointer' },
+    clickHandler: () => router.push('/agendar')
   }
 ])
 
