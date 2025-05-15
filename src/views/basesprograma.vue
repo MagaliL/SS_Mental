@@ -64,13 +64,38 @@
 </div>
   <br><br><br>
         
-<h1 style="color: #24417c; text-align: center;">Consulta el documento de las bases del programa </h1>
+<h1 style="color: #24417c; text-align: center;">Consulta el documento de las bases del programa: </h1> <br><br>
+
+<div class="pdf-container">
+  <!-- Visor PDF -->
+  <embed 
+    src="/public/demo/pdf/PSM_FI_UNAM.pdf" 
+    type="application/pdf" 
+    width="100%" 
+    height="600px"
+    class="pdf-viewer"
+  >
+  
+  <!-- Botón de descarga -->
+  <div class="download-section">
+    <a 
+      href="/public/demo/pdf/PSM_FI_UNAM.pdf" 
+      download="PSM_FI_UNAM.pdf"
+      class="download-button"
+    >
+      📥 Descargar PDF
+    </a>
+  </div>
+</div>
+
 
 
   <!-- Enlace de vuelta al home -->
    <br><br><br>
   <router-link to="/" class="nav-link">Volver al inicio</router-link>
   </template>
+
+
 
 <style scoped>
 .numbered-list {
@@ -113,6 +138,43 @@
   .border-gray-400 {
     margin: 0 -15px; /* Ajuste para móviles */
   }
+}
+
+
+.pdf-container {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 2rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.pdf-viewer {
+  min-height: 500px; /* Altura mínima */
+  background: #f9f9f9; /* Fondo mientras carga */
+}
+
+.download-section{
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  margin: 2rem 0; /* Espaciado */
+
+}
+.download-button {
+  display: inline-block;
+  background:#cd171e;
+  color: white;
+  padding: 12px 24px;
+  margin: 15px 0;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.download-button:hover {
+  background: #1a335f;
+  transform: translateY(-2px);
 }
 
 </style>

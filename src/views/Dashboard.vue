@@ -51,8 +51,6 @@ const infografias = ref([
 ])
 
 
-
-
 // Manejo de errores
 onMounted(() => {
   try {
@@ -62,7 +60,7 @@ onMounted(() => {
   }
 })
 
-// components: {VueperSlides, VueperSlide }
+
 
 </script>
 

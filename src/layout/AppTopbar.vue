@@ -24,7 +24,9 @@
             <router-link to="/emergencia" class="text-blue-900 font-semibold py-2">Emergencia</router-link>
             <!--router-link to="/agendar" class="text-blue-900 font-semibold py-2">Agendar primera cita</router-link-->
             <a href="https://forms.gle/MLKdKxPMz7szFCiq5" class="text-blue-900 font-semibold py-2"> Agendar primera cita </a>
+            <router-link to="/recursoslinea" class="text-blue-900 font-semibold py-2">Recursos en línea</router-link>
             <div class="relative">
+            
                 <button class="text-blue-900 font-semibold py-2">Más ▼</button>
             </div>
         </nav>
