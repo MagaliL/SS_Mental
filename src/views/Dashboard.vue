@@ -49,44 +49,7 @@ const infografias = ref([
 ])
 
 
-// const carruselPrincipal = ref( [
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/principal/slide1.png', import.meta.url).href
-    
-//   },
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/principal/Emergencia.png', import.meta.url).href,
-//     style: { cursor: 'pointer'},
-//     click: () => router.push('/emergencia')
-//   },
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/principal/Agendar.png', import.meta.url).href,
-//     click: () => router.push('/agendar')
-//   },
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/principal/Actividades.png', import.meta.url).href,
-//     click: () => router.push('/preventivas')
-//   },
 
-// ])
-// // Definir imágenes para el carrusel de infografías
-// const infografias = ref( [
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/infografias/AyS.png', import.meta.url).href
-//   },
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/infografias/orquesta.png', import.meta.url).href
-//   },
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/infografias/Pautas_para_la-atencion.png', import.meta.url).href
-//   },
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/infografias/Proceso.png', import.meta.url).href
-//   },
-//   {
-//     image: new URL('@/assets/imagenes/images-carousel/infografias/Seguro.png', import.meta.url).href
-//   },
-// ])
 
 // Manejo de errores
 onMounted(() => {
