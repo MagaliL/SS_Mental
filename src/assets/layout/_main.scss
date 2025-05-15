@@ -20,10 +20,32 @@
     flex: 1; /* Ambas columnas ocupan el mismo espacio */
     padding: 15px;
     border-radius: 5px;
+    min-width: 0;
 }
 
+/* ------------------------- */
+/* Media Queries para móviles */
+/* ------------------------- */
+@media (max-width: 768px) {
+  .Homepage_container {
+    flex-direction: column; /* Apila columnas verticalmente */
+  }
 
+  .columna {
+    flex: none; /* Ancho completo */
+    width: 100%;
+    padding: 12px; /* Ajuste opcional para móviles */
+  }
+}
 
+/* ------------------------- */
+/* Ajustes para tablets */
+/* ------------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .columna {
+    padding: 10px; /* Reducción opcional */
+  }
+}
 .hero-section {
     margin-bottom: 3rem;
   }
@@ -113,3 +135,4 @@ button{
         background: rgba(0,0,0,0.8);
       }
 
+    
