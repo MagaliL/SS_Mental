@@ -2,52 +2,91 @@
 import '@fortawesome/fontawesome-free/css/all.css'; // Importa Font Awesome
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { VueperSlides } from 'vueperslides';
+import { VueperSlide, VueperSlides } from 'vueperslides';
 import 'vueperslides/dist/vueperslides.css';
+
+// Importaciones directas de imágenes
+import Actividades from '@/assets/imagenes/images-carousel/principal/Actividades.png';
+import Agendar from '@/assets/imagenes/images-carousel/principal/Agendar.png';
+import Emergencia from '@/assets/imagenes/images-carousel/principal/Emergencia.png';
+import slide1 from '@/assets/imagenes/images-carousel/principal/slide1.png';
+
+import AyS from '@/assets/imagenes/images-carousel/infografias/AyS.png';
+import orquesta from '@/assets/imagenes/images-carousel/infografias/orquesta.jpeg';
+import Pautas from '@/assets/imagenes/images-carousel/infografias/Pautas_para_la-atencion.png';
+import Proceso from '@/assets/imagenes/images-carousel/infografias/Proceso.png';
+import Seguro from '@/assets/imagenes/images-carousel/infografias/Seguro.jpeg';
 
 const router = useRouter()
 
 // Definición de imágenes para el primer carrusel
 
-const carruselPrincipal = ref( [
+const carruselPrincipal = ref([
   {
-    image: new URL('@/assets/imagenes/images-carousel/principal/slide1.png', import.meta.url).href,
-    
+    image: slide1
   },
   {
-    image: new URL('@/assets/imagenes/images-carousel/principal/Emergencia.png', import.meta.url).href,
-    style: { cursor: 'pointer'},
+    image: Emergencia,
+    style: { cursor: 'pointer' },
     click: () => router.push('/emergencia')
   },
   {
-    image: new URL('@/assets/imagenes/images-carousel/principal/Agendar.png', import.meta.url).href,
+    image: Agendar,
     click: () => router.push('/agendar')
   },
   {
-    image: new URL('@/assets/imagenes/images-carousel/principal/Actividades.png', import.meta.url).href,
+    image: Actividades,
     click: () => router.push('/preventivas')
-  },
-
+  }
 ])
 
-// Definir imágenes para el carrusel de infografías
-const infografias = ref( [
-  {
-    image: new URL('@/assets/imagenes/images-carousel/infografias/AyS.png', import.meta.url).href
-  },
-  {
-    image: new URL('@/assets/imagenes/images-carousel/infografias/orquesta.png', import.meta.url).href
-  },
-  {
-    image: new URL('@/assets/imagenes/images-carousel/infografias/Pautas_para_la-atencion.png', import.meta.url).href
-  },
-  {
-    image: new URL('@/assets/imagenes/images-carousel/infografias/Proceso.png', import.meta.url).href
-  },
-  {
-    image: new URL('@/assets/imagenes/images-carousel/infografias/Seguro.png', import.meta.url).href
-  },
+const infografias = ref([
+  { image: AyS },
+  { image: orquesta },
+  { image: Pautas },
+  { image: Proceso },
+  { image: Seguro }
 ])
+
+
+// const carruselPrincipal = ref( [
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/principal/slide1.png', import.meta.url).href
+    
+//   },
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/principal/Emergencia.png', import.meta.url).href,
+//     style: { cursor: 'pointer'},
+//     click: () => router.push('/emergencia')
+//   },
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/principal/Agendar.png', import.meta.url).href,
+//     click: () => router.push('/agendar')
+//   },
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/principal/Actividades.png', import.meta.url).href,
+//     click: () => router.push('/preventivas')
+//   },
+
+// ])
+// // Definir imágenes para el carrusel de infografías
+// const infografias = ref( [
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/infografias/AyS.png', import.meta.url).href
+//   },
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/infografias/orquesta.png', import.meta.url).href
+//   },
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/infografias/Pautas_para_la-atencion.png', import.meta.url).href
+//   },
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/infografias/Proceso.png', import.meta.url).href
+//   },
+//   {
+//     image: new URL('@/assets/imagenes/images-carousel/infografias/Seguro.png', import.meta.url).href
+//   },
+// ])
 
 // Manejo de errores
 onMounted(() => {
@@ -72,8 +111,15 @@ onMounted(() => {
       :bullets="true" 
       :autoplay="true" 
       :autoplay-duration="2000" 
-      :pause-autoplay-on-hover="true" 
-      :slides="carruselPrincipal">
+      :pause-autoplay-on-hover="true">
+
+      <vueper-slide
+        v-for="(slide, i) in carruselPrincipal"
+        :key="i"
+        :image="slide.image"
+        :style="slide.style || {}"
+        @click="slide.click || (() => {})"
+        />
           
           <template #arrow-left>
             <i class="fas fa-chevron-left"></i>
@@ -123,21 +169,29 @@ onMounted(() => {
         </div>
    
   </div>
-    <br><br><br>
+    
     <b><h4 class="Info" style="text-align: center;">Síguenos en Facebook</h4></b>         
-    <div style="display: flex; align-items: center; "><button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button></div>
+    <div style="display: flex; justify-content: center; ">
+    <button class="primary-button2"><a href="https://www.facebook.com/profile.php?id=61572265868700" target="_blank">NUESTRO FACEBOOK</a></button>
+  </div>
     <br><br><br><br><br><br>
       
 
 <!--  Para el carrusel de infografías -->
 <div v-if="infografias">
-     <vueper-slides :slide-ratio="16 / 9" 
+     <vueper-slides 
+    :slide-ratio="16 / 9" 
     :bullets="true" 
     :autoplay="true" 
     :autoplay-duration="2000" 
     :pause-autoplay-on-hover="true" 
-    class="infografia-carrusel"
-    :slides="infografias">
+    class="infografia-carrusel">
+
+    <vueper-slide
+        v-for="(slide, i) in infografias"
+        :key="i"
+        :image="slide.image"
+      />
 
           
       <template #arrow-left>
